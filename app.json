@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "icobanew",
-    "slug": "icobanew",
-    "version": "1.0.0",
+    "name": "icoba",
+    "slug": "icoba",
+    "version": "6.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon2.png",
     "splash": {
@@ -24,7 +24,10 @@
         "foregroundImage": "./assets/icon2.png",
         "backgroundColor": "#151B8D"
       },
-      "package": "com.ayodavid.icobanew"
+      "package": "com.schoolshell.icoba",
+      "versionCode": 6,
+      "permissions": []
+
     },
     "web": {
       "favicon": "./assets/favicon.png"

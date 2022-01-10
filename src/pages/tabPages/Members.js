@@ -86,12 +86,14 @@ const ClassMates = () => {
       body: JSON.stringify({
         // we will pass our input data to server
         gradYear: myGrad
+
       })
 
     })
       .then((response) => response.json())
       .then((responseJson) => {
         //console.log('sucessful: ', responseJson);
+        //console.log(myGrad)
         setMasterDataSource(responseJson);
         setFilteredDataSource(responseJson);
         dispatch({ type: "FETCHING MATES SUCCESS", data: responseJson });

@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import PaymentScreen from './PaymentHome';
+import PaymentWebView from './PaymentWebView';
 
 
 const Stack = createStackNavigator();
@@ -28,6 +29,21 @@ export default function PaymentStack({ navigation }) {
                     <Icon.Button name="ios-menu" size={25} backgroundColor="#1A237E" onPress={() => navigation.openDrawer()}></Icon.Button>
                 )
             }} />
+            <Stack.Screen
+                name='PaymentWebView'
+                component={PaymentWebView}
+                options={{
+                    title: 'Pay Dues & Donations ',
+                    headerLeft: () => (
+                        <Icon.Button
+                            name="ios-menu"
+                            size={25}
+                            backgroundColor="#1A237E"
+                            onPress={() => navigation.openDrawer()}>
+
+                        </Icon.Button>
+                    )
+                }} />
 
         </Stack.Navigator>
     );

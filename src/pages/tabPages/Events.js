@@ -50,34 +50,48 @@ const OurEvents = () => {
 
   const [eventsState, dispatch] = useReducer(reducerFunction, initialstate);
 
+  const fetchEvent = async () => {
+    try {
+      const response = await fetch('https://schoolshell.com/icoba_app/events.php')
+      const events = await response.json()
+      //console.log(events)
+      dispatch({ type: "FETCHING EVENTS SUCCESS", data: events });
+
+    } catch (error) {
+
+    }
+
+  }
+
 
   useEffect(() => {
 
     dispatch({ type: "FETCHING EVENTS REQUEST" });
+    fetchEvent()
 
-    fetch('https://schoolshell.com/icoba_app/events.php', {
-      method: 'post',
-      header: {
-        'Accept': 'application/json',
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        // we will pass our input data to server
-        //gradYear: myGrad
-      })
+    // fetch('https://schoolshell.com/icoba_app/events.php', {
+    //   method: 'post',
+    //   header: {
+    //     'Accept': 'application/json',
+    //     'Content-type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     // we will pass our input data to server
+    //     //gradYear: myGrad
+    //   })
 
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log('sucessful: ', responseJson);
-        dispatch({ type: "FETCHING EVENTS SUCCESS", data: responseJson });
+    // })
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     console.log('sucessful: ', responseJson);
+    //     dispatch({ type: "FETCHING EVENTS SUCCESS", data: responseJson });
 
-      })
-      .catch((error) => {
-        console.error(error);
-        //console.log('unsucessful: ', eventsState);
-        dispatch({ type: "FETCHING EVENTS FAIL", data: responseJson });
-      });
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //     console.log('unsucessful: ', eventsState);
+    //     dispatch({ type: "FETCHING EVENTS FAIL", data: responseJson });
+    //   });
   }, []);
 
 
@@ -89,7 +103,7 @@ const OurEvents = () => {
           {eventsState.isLoading == true ? <ActivityIndicator style={styles.loading} size="large" /> : (
 
             eventsState.eventsData.map((ev, i) => (
-              <Card>
+              <Card key={i}>
                 <Card.Title title={ev.title} subtitle={ev.subtTitle} left={LeftContent} />
                 <Card.Cover source={{ uri: ev.image }} />
                 <Card.Content>

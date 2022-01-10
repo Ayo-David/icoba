@@ -12,7 +12,7 @@ import { AuthContext } from '../../components/context';
 
 
 
-const Payment = () => {
+const Payment = ({ navigation }) => {
 
 
   const { loginState } = React.useContext(AuthContext);
@@ -36,13 +36,13 @@ const Payment = () => {
 
       <View style={styles.midPane}>
         <View style={styles.midPanecontent1}>
-          <TouchableOpacity style={styles.button} onPress={() => { Linking.openURL('https://schoolshell.com/icoba_pay/') }}>
+          <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('PaymentWebView') }}>
             <Text style={styles.buttonText}>Pay Dues</Text>
           </TouchableOpacity>
 
         </View>
         <View style={styles.midPanecontent2}>
-          <TouchableOpacity style={styles.button} onPress={() => { Linking.openURL('https://schoolshell.com/icoba_pay/') }}>
+          <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('PaymentWebView') }}>
             <Text style={styles.buttonText}>Make Donations</Text>
           </TouchableOpacity>
         </View>

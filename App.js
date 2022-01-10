@@ -164,7 +164,7 @@ const App = () => {
               alert("Please check your internet connectivity");
             } else {
               //alert("Successfully Login");
-              console.log(userData);
+              //console.log(userData);
               dispatch({ type: "LOGIN", data: userData, token: userToken });
             }
           })
